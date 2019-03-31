@@ -788,7 +788,7 @@ YY_RULE_SETUP
 case 6:
 YY_RULE_SETUP
 #line 21 "check.l"
-printf(" <Expressão Lógica> ");
+printf(" <Boolean> ");
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
@@ -803,12 +803,12 @@ printf(" <Operador Aritmético> ");
 case 9:
 YY_RULE_SETUP
 #line 24 "check.l"
-printf(" <Nº Inteiro> ");
+printf(" <Inteiro> ");
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 25 "check.l"
-printf(" <Nº Float> ");
+printf(" <Float> ");
 	YY_BREAK
 case 11:
 YY_RULE_SETUP

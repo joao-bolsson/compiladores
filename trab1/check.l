@@ -18,11 +18,11 @@ IDENTIFIER	[A-Za-z][A-Za-z0-9]*
 			}
 \(			{openP++;}
 \)			{closeP++;}
-true|TRUE|false|FALSE	printf(" <Expressão Lógica> ");
+true|TRUE|false|FALSE	printf(" <Boolean> ");
 AND|OR|NOT		printf(" <Operador Lógico> ");
 \+|\-|\/|\*		printf(" <Operador Aritmético> ");
-{D}+			printf(" <Nº Inteiro> ");
-{D}+\.{D}		printf(" <Nº Float> ");
+{D}+			printf(" <Inteiro> ");
+{D}+\.{D}		printf(" <Float> ");
 {IDENTIFIER}		printf(" <Identificador> ");
 >=?|<=?|==		printf(" <Operador Lógico Aritmético> ");
 =			printf(" <Operador Atribuição> ");

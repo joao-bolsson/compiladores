@@ -1,0 +1,11 @@
+ <Boolean> 
+ <Boolean>  <Operador Lógico>  <Boolean> 
+ <Boolean>  <Operador Lógico>  <Boolean>  <Operador Lógico>  <Boolean> 
+ <Boolean>  <Operador Lógico>  <Boolean>  <Operador Lógico>  <Boolean> 
+ <Operador Lógico>  <Boolean>  <Operador Lógico>  <Boolean> 
+ <Boolean>  <Operador Lógico>  <Inteiro>  <Operador Lógico Aritmético>  <Inteiro> 
+ <Inteiro>  <Operador Lógico Aritmético>  <Inteiro>  <Operador Aritmético>  <Inteiro>  <Operador Lógico>  <Boolean> 
+ <Boolean>  <Operador Lógico>  <Inteiro>  <Operador Lógico Aritmético>  <Inteiro>  <Operador Lógico>  <Boolean> 
+ <Inteiro>  <Operador Atribuição>  <Inteiro>  <Operador Lógico>  <Boolean>  <Operador Lógico>  <Boolean> 
+ <Operador Lógico>  <Boolean>  <Operador Lógico>  <Inteiro>  <Operador Aritmético>  <Inteiro>  <Operador Lógico Aritmético>  <Operador Lógico Aritmético>  <Inteiro> 
+ <Boolean>  <Operador Lógico>  <Boolean>  <Erro Parenteses>
