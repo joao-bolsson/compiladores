@@ -5,6 +5,8 @@
 	void yyerror(char *);
 %}
 
+D			[0-9]
+
 %%
 
 true|TRUE		{	return TRUE;		}
@@ -32,7 +34,7 @@ false|FALSE		{	return FALSE;		}
                 		return VARIABLE;
                 	}
 
-[0-9]+      		{
+{D}+      		{
                 		yylval = atoi(yytext);
                 		return INTEGER;
             		}

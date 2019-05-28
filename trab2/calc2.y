@@ -1,12 +1,12 @@
 %{
-    #include <stdio.h>
-    void yyerror(char *);
-    int yylex(void);
-
-    int sym[26];
+	#include <stdio.h>
+	#include <stdbool.h>
+	void yyerror(char *);
+	int yylex(void);
+	int sym[26];
 %}
 
-%token INTEGER VARIABLE TRUE FALSE
+%token INTEGER FLOAT VARIABLE TRUE FALSE
 %left NOT
 %left AND
 %left OR
@@ -25,28 +25,37 @@ program:
 
 statement:
         exp               		{ printf("%d\n", $1);}
+	| exp_bool			{
+						if($1) printf("true\n");
+						else printf("false\n");
+					}
         | VARIABLE '=' exp		{ sym[$1] = $3; }
         ;
+
+exp_bool:
+	TRUE 				{ $$ = true; 	}
+    	| FALSE 			{ $$ = false;	}
+	| exp_bool EQ exp_bool		{ $$ = $1 == $3;}
+	| exp_bool NE exp_bool		{ $$ = $1 != $3;}
+	| exp_bool LE exp_bool		{ $$ = $1 <= $3;}
+	| exp_bool GE exp_bool		{ $$ = $1 >= $3;}
+	| exp_bool AND exp_bool		{ $$ = $1 && $3;}
+	| exp_bool OR exp_bool		{ $$ = $1 || $3;}
+	| NOT exp_bool			{ $$ = !$2;     }
+	| exp_bool '<' exp_bool     	{ $$ = $1 < $3; }
+	| exp_bool '>' exp_bool     	{ $$ = $1 > $3; }
+	| '(' exp_bool ')'            	{ $$ = $2; }
+	| exp
+	;
 
 exp:
         INTEGER
         | VARIABLE        		{ $$ = sym[$1]; }
-	| TRUE 				{ $$ = 1; 	}
-    	| FALSE 			{ $$ = 0;	}
-	| exp EQ exp			{ $$ = $1 == $3;}
-	| exp NE exp			{ $$ = $1 != $3;}
-	| exp LE exp			{ $$ = $1 <= $3;}
-	| exp GE exp			{ $$ = $1 >= $3;}
-	| exp AND exp			{ $$ = $1 && $3;}
-	| exp OR exp			{ $$ = $1 || $3;}
-	| NOT exp			{ $$ = !$2;     }
-	| exp '<' exp     		{ $$ = $1 < $3; }
-	| exp '>' exp     		{ $$ = $1 > $3; }
         | exp '+' exp     		{ $$ = $1 + $3; }
         | exp '-' exp     		{ $$ = $1 - $3; }
         | exp '*' exp     		{ $$ = $1 * $3; }
         | exp '/' exp     		{ $$ = $1 / $3; }
-        | '(' exp ')'            	{ $$ = $2; }
+        | '(' exp ')'            	{ $$ = $2; }	
         ;
 
 %%
