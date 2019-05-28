@@ -6,7 +6,7 @@
     int sym[26];
 %}
 
-%token INTEGER VARIABLE TRUE FALSE AND
+%token INTEGER VARIABLE TRUE FALSE AND OR NOT
 %left '+' '-'
 %left '*' '/'
 
@@ -28,8 +28,8 @@ exp:
 	| TRUE 				{ $$ = 1; 	}
     	| FALSE 			{ $$ = 0;	}
 	| exp AND exp			{ $$ = $1 && $3;}
-	| exp "OR" exp			{ $$ = $1 || $3;}
-	| "NOT" exp			{ $$ = !$2;     }
+	| exp OR exp			{ $$ = $1 || $3;}
+	| NOT exp			{ $$ = !$2;     }
         | exp '+' exp     		{ $$ = $1 + $3; }
         | exp '-' exp     		{ $$ = $1 - $3; }
         | exp '*' exp     		{ $$ = $1 * $3; }

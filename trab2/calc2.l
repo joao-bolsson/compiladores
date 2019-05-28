@@ -7,13 +7,15 @@
 
 %%
 
-true|TRUE		{	return TRUE;}
+true|TRUE		{	return TRUE;		}
 
-false|FALSE		{	return FALSE;}
+false|FALSE		{	return FALSE;		}
 
-"and"|"AND"		{	return AND;}
+"and"|"AND"		{	return AND;		}
 
-AND|OR|NOT|&		{	return *yytext;}
+"or"|"OR"		{	return OR;		}
+
+"not"|"NOT"		{	return NOT;		}
 
 [-+()=/*\n]	     	{ 	return *yytext; }		
 
