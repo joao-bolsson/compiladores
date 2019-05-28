@@ -6,7 +6,7 @@
 	int sym[26];
 %}
 
-%token INTEGER FLOAT VARIABLE TRUE FALSE
+%token INTEGER VARIABLE TRUE FALSE
 %left NOT
 %left AND
 %left OR
@@ -15,6 +15,7 @@
 %left '+' '-'
 %left '*' '/'
 %left '(' ')'
+%nonassoc UMINUS
 
 %%
 
@@ -51,6 +52,7 @@ exp_bool:
 exp:
         INTEGER
         | VARIABLE        		{ $$ = sym[$1]; }
+	| '-' exp %prec UMINUS 		{ $$ = -$2;	}
         | exp '+' exp     		{ $$ = $1 + $3; }
         | exp '-' exp     		{ $$ = $1 - $3; }
         | exp '*' exp     		{ $$ = $1 * $3; }
