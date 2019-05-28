@@ -17,7 +17,15 @@ false|FALSE		{	return FALSE;		}
 
 "not"|"NOT"		{	return NOT;		}
 
-[-+()=/*\n]	     	{ 	return *yytext; }		
+">="			{	return GE;		}
+
+"<="			{	return LE;		}
+
+"=="			{	return EQ;		}
+
+"!="			{	return NE;		}
+
+[-+()=/*><\n]	     	{ 	return *yytext; }		
 
 [a-z]       		{
                 		yylval = *yytext - 'a';
