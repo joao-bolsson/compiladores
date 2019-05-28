@@ -6,7 +6,7 @@
     int sym[26];
 %}
 
-%token INTEGER VARIABLE TRUE FALSE
+%token INTEGER VARIABLE TRUE FALSE AND
 %left '+' '-'
 %left '*' '/'
 
@@ -27,9 +27,7 @@ exp:
         | VARIABLE        		{ $$ = sym[$1]; }
 	| TRUE 				{ $$ = 1; 	}
     	| FALSE 			{ $$ = 0;	}
-	| exp "AND" exp			{ 
-					printf("EH AND\n");
-					$$ = $1 && $3;}
+	| exp AND exp			{ $$ = $1 && $3;}
 	| exp "OR" exp			{ $$ = $1 || $3;}
 	| "NOT" exp			{ $$ = !$2;     }
         | exp '+' exp     		{ $$ = $1 + $3; }

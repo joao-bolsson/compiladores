@@ -11,7 +11,9 @@ true|TRUE		{	return TRUE;}
 
 false|FALSE		{	return FALSE;}
 
-AND|OR|NOT		{	return *yytext;}
+"and"|"AND"		{	return AND;}
+
+AND|OR|NOT|&		{	return *yytext;}
 
 [-+()=/*\n]	     	{ 	return *yytext; }		
 
