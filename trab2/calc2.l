@@ -5,14 +5,15 @@
 	void yyerror(char *);
 %}
 
-OP_L	[AND|OR|NOT]
-OP_A	[-+()=/*\n]
-
 %%
 
 true|TRUE		{	return TRUE;}
 
 false|FALSE		{	return FALSE;}
+
+AND|OR|NOT		{	return *yytext;}
+
+[-+()=/*\n]	     	{ 	return *yytext; }		
 
 [a-z]       		{
                 		yylval = *yytext - 'a';
@@ -23,8 +24,6 @@ false|FALSE		{	return FALSE;}
                 		yylval = atoi(yytext);
                 		return INTEGER;
             		}
-
-{OP_L}|{OP_A}     	{ 	return *yytext; }
 
 [ \t]   		; /* skip whitespace */
 
