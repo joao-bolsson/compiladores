@@ -6,9 +6,13 @@
     int sym[26];
 %}
 
-%token INTEGER VARIABLE TRUE FALSE AND OR NOT
+%token INTEGER VARIABLE TRUE FALSE
+%left NOT
+%left AND
+%left OR
 %left '+' '-'
 %left '*' '/'
+%left '(' ')'
 
 %%
 
