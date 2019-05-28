@@ -18,18 +18,18 @@ program:
         ;
 
 statement:
-        expression                      { printf("%d\n", $1); }
-        | VARIABLE '=' expression       { sym[$1] = $3; }
+        exp               		{ printf("%d\n", $1); }
+        | VARIABLE '=' exp		{ sym[$1] = $3; }
         ;
 
-expression:
+exp:
         INTEGER
-        | VARIABLE                      { $$ = sym[$1]; }
-        | expression '+' expression     { $$ = $1 + $3; }
-        | expression '-' expression     { $$ = $1 - $3; }
-        | expression '*' expression     { $$ = $1 * $3; }
-        | expression '/' expression     { $$ = $1 / $3; }
-        | '(' expression ')'            { $$ = $2; }
+        | VARIABLE        		{ $$ = sym[$1]; }
+        | exp '+' exp     		{ $$ = $1 + $3; }
+        | exp '-' exp     		{ $$ = $1 - $3; }
+        | exp '*' exp     		{ $$ = $1 * $3; }
+        | exp '/' exp     		{ $$ = $1 / $3; }
+        | '(' exp ')'            	{ $$ = $2; }
         ;
 
 %%
