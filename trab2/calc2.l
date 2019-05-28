@@ -1,27 +1,34 @@
     /* calculator #1 */
 %{
-    #include "y.tab.h"
-    #include <stdlib.h>
-    void yyerror(char *);
+	#include "y.tab.h"
+	#include <stdlib.h>
+	void yyerror(char *);
 %}
+
+OP_L	[AND|OR|NOT]
+OP_A	[-+()=/*\n]
 
 %%
 
-[a-z]       	{
-                	yylval = *yytext - 'a';
-                	return VARIABLE;
-                }
+true|TRUE		{	return TRUE;}
 
-[0-9]+      	{
-                	yylval = atoi(yytext);
-                	return INTEGER;
-            	}
+false|FALSE		{	return FALSE;}
 
-[-+()=/*\n]     { return *yytext; }
+[a-z]       		{
+                		yylval = *yytext - 'a';
+                		return VARIABLE;
+                	}
 
-[ \t]   ;       /* skip whitespace */
+[0-9]+      		{
+                		yylval = atoi(yytext);
+                		return INTEGER;
+            		}
 
-.               yyerror("Unknown character");
+{OP_L}|{OP_A}     	{ 	return *yytext; }
+
+[ \t]   		; /* skip whitespace */
+
+.               	yyerror("Unknown character");
 
 %%
 
